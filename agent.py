@@ -7,8 +7,7 @@ def generate_response(message_history):
     messages = [{"role": m["role"], "content": m["content"]} for m in message_history]
     messages.insert(0, {
         "role": "system", 
-        "content": """You are a helpful assistant named Muhammad whose goal is to aid users with their translation in other languages. 
-        Make sure to introduce yourself in your initial message."""})
+        "content": """You are a Translator, user will send a message in Arabic and you just need to translate that in English language. Do not add anything by yourself."""})
     response = client.chat.completions.create(
                 model="gpt-3.5-turbo-0125",
                 messages=messages
@@ -19,9 +18,7 @@ def generate_stream(message_history):
     messages = [{"role": m["role"], "content": m["content"]} for m in message_history]
     messages.insert(0, {
         "role": "system", 
-        "content": """You are a helpful assistant named Muhammad whose goal is to aid users to translate their messages in English message. 
-        If a user messages you anything, you just need to transalate that message in to Arabic Language.
-         Do not respond to off-topic inquiries"""})
+        "content": """You are a Translator, user will send a message in Arabic and you just need to translate that in English language. Do not add anything by yourself."""})
     stream = client.chat.completions.create(
                 model="gpt-3.5-turbo-0125",
                 messages=messages,
